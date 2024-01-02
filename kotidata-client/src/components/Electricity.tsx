@@ -7,39 +7,49 @@ type Price = {
     endDate: string
 }
   
-type Data = {
-    prices: Price[]
-}
-  
 const Electricity: React.FC = () => {
-    const [data, setData] = useState<Data | null>(null)
+    const [prices, setPrices] = useState<Price[]| null>(null)
     
     useEffect(() => {
-        const fetchData = async () => {
+        const getAllPrices = async () => {
             try {
-                const result = await axios.get<Data>('https://api.porssisahko.net/v1/latest-prices.json')
-                console.log('Data: ', result.data)
-                setData(result.data)
+                const result = await axios.get<Price[]>('http://localhost:5004/api/prices')
+                setPrices(result.data)
             } catch (error) {
                 console.error('Error fetching data: ', error)
             }
         }
 
-        fetchData()
+        getAllPrices()
     }, [])
 
-    if (!data) {
+    const priceNow = () => {
+        const now = new Date()
+        const matchingPriceEntry = prices?.find(
+            (price) => new Date(price.startDate) <= now && new Date(price.endDate) > now
+        )
+    
+        if (!matchingPriceEntry) {
+            throw 'Price for the requested date is missing'
+        }
+    
+        return matchingPriceEntry.price
+    }
+
+    if (!prices) {
         return <div>Loading...</div>
     }
 
     return (
         <div>
-            <h1>Latest Prices</h1>
-            {data.prices.map((item, index) => (
+            <h2>Current Price</h2>
+                <p>{priceNow()}</p>
+            <h2>Latest Prices</h2>
+            {prices.map((item, index) => (
                 <div key={index}>
-                <p>Price: {item.price}</p>
-                <p>Start Date: {new Date(item.startDate).toLocaleString()}</p>
-                <p>End Date: {new Date(item.endDate).toLocaleString()}</p>
+                    <p>From: {new Date(item.startDate).toLocaleString()}</p>
+                    <p>To: {new Date(item.endDate).toLocaleString()}</p>
+                    <p>Price: {item.price}</p>
                 </div>
             ))}
         </div>
