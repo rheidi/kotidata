@@ -1,25 +1,23 @@
-import { useState } from 'react'
 import './styles/App.css'
-import Electricity from './components/Electricity'
+import Footer from './components/Footer'
+import Header from './components/Header'
 import Clock from './components/Clock'
+import Electricity from './components/Electricity'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <main>
-      <h1>Kotidata</h1>
-      <Clock />
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <Electricity />
-      </div>
-      <p className="read-the-docs">
-        All sorts of information.
-      </p>
-    </main>
+    <div className='wrapper'>
+      <Header />
+      <aside>
+        <Clock />
+      </aside>
+      <main>
+        <div className='middleStuff'>
+          <Electricity />
+        </div>
+      </main>
+      <Footer />
+    </div>
   )
 }
 

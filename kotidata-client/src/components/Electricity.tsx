@@ -62,7 +62,7 @@ const Electricity: React.FC = () => {
           <XAxis dataKey="startDate" reversed={true} />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="price" fill="#8884d8" />
+          <Bar dataKey="price" fill="#AEC670" />
         </BarChart>
       </ResponsiveContainer>
     </div>

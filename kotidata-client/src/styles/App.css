@@ -1,8 +1,7 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  background-color: #1A2902;
 }
 
 .logo {
@@ -18,25 +17,58 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+header {
+  grid-area: header;
+  background-color: #344C11;
+  padding: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: left;
+  align-items: center;
+  gap: 10em;
+}
+
+main {
+  place-items: center;
+  grid-area: content;
+  padding: 15px;
+}
+
+aside {
+  grid-area: sivupylly;
+  padding: 15px;
+  max-width: 150px;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #344C11;
+  padding: 10px;
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 6fr;
+  grid-template-areas:
+    "header header"
+    "sivupylly content"
+    "footer footer";
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    grid-template-columns: 4fr;
+    grid-template-areas:
+      "header"
+      "sivupylly"
+      "content"
+      "footer";
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
