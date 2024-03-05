@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
 const Clock = () => {
+    const vko_paiva = new Array("sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai")
+    const kuukausi = new Array("tammikuuta", "helmikuuta", "maaliskuuta", "huhtikuuta", "toukokuuta", "kesäkuuta", "heinäkuuta", "elokuuta", "syyskuuta", "lokakuuta", "marraskuuta", "joulukuuta")
     const [time, setTime] = useState(new Date())
     useEffect(() => {
         const interval = setInterval(() => {
@@ -9,7 +11,10 @@ const Clock = () => {
         return () => clearInterval(interval)
     }, [])
     return (
-        <h2>{time.toLocaleTimeString()}</h2>
+        <div>
+            <h2>{time.toLocaleTimeString()}</h2>
+            <p>Tänään on {vko_paiva[time.getDay()]},<br />{time.getDate()}. {kuukausi[time.getMonth()]}<br />vuonna {time.getFullYear()}</p>
+        </div>
     )
 }
 
