@@ -2,8 +2,15 @@
 
 ## client
 
+React & vite
 client starts with `npm run dev` and runs in port 5173.
 
 ## server
 
-server starts with `npm start`and runs in port 5004.
+Express
+server starts with `npx nodemon`and runs in port 5004.
+
+
+## Electricity prices
+
+recharts
