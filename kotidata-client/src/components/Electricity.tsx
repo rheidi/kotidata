@@ -8,16 +8,16 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from "recharts";
+} from "recharts"
 
 type Price = {
-  price: number;
-  startDate: Date;
-  endDate: Date;
+  price: number
+  startDate: Date
+  endDate: Date
 };
 
 const Electricity: React.FC = () => {
-  const [prices, setPrices] = useState<Price[] | null>(null);
+  const [prices, setPrices] = useState<Price[] | null>(null)
 
   useEffect(() => {
     const getAllPrices = async () => {
@@ -25,37 +25,37 @@ const Electricity: React.FC = () => {
         const result = await axios.get<Price[]>(
           "http://localhost:5004/api/prices"
         );
-        setPrices(result.data);
+        setPrices(result.data)
       } catch (error) {
-        console.error("Error fetching data: ", error);
+        console.error("Error fetching data: ", error)
       }
     };
 
     getAllPrices();
-  }, []);
+  }, [])
 
   const priceNow = () => {
     const now = new Date();
     const matchingPriceEntry = prices?.find(
       (price) =>
         new Date(price.startDate) <= now && new Date(price.endDate) > now
-    );
+    )
 
     if (!matchingPriceEntry) {
-      throw "Price for the requested date is missing";
+      throw "Price for the requested date is missing"
     }
 
-    return matchingPriceEntry.price;
+    return matchingPriceEntry.price
   };
 
   if (!prices) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   return (
     <div>
-      <h2>Current Price</h2>
-      <p>{priceNow()}</p>
+      <h2>Sähkön hinta</h2>
+      <p>Hinta tällä hetkellä: {priceNow()}</p>
       <ResponsiveContainer width="101%" height={300}>
         <BarChart data={prices}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -66,7 +66,7 @@ const Electricity: React.FC = () => {
         </BarChart>
       </ResponsiveContainer>
     </div>
-  );
-};
-// {new Date(startDate).toLocaleString()}
+  )
+}
+
 export default Electricity;

@@ -3,7 +3,7 @@ import React from 'react'
 const Footer: React.FC = () => {
     return (
         <footer>
-            <p>All sorts of information.</p>
+            <p>Kaikenlaista informaatiota.</p>
         </footer>
     );
 };

@@ -6,7 +6,7 @@ const Header: React.FC = () => {
             <img className="logo" src="home.png" alt="Kotidata logo" />
             <h1>Kotidata</h1>
         </header>
-    );
-};
+    )
+}
 
 export default Header
