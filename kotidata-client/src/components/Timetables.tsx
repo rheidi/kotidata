@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MyComponent: React.FC = () => {
+const Timetables: React.FC = () => {
 
     return (
         <div>
@@ -9,4 +9,4 @@ const MyComponent: React.FC = () => {
     )
 }
 
-export default MyComponent
+export default Timetables

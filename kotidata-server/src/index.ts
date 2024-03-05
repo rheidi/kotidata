@@ -1,38 +1,14 @@
 import express from "express"
 import cors from "cors"
 import axios from 'axios'
+import { Price, fetchLatestPriceData, getPriceForDate } from "./services/electricityPriceService"
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
 
-const LATEST_PRICES_ENDPOINT = 'https://api.porssisahko.net/v1/latest-prices.json'
-
-type Price = {
-  price: number
-  startDate: string
-  endDate: string
-}
-
-async function fetchLatestPriceData() {
-    const response = await axios.get(LATEST_PRICES_ENDPOINT)
-    return response.data
-}
-
-function getPriceForDate(date: Date, prices: Price[]) {
-    const matchingPriceEntry = prices.find(
-        (price) => new Date(price.startDate) <= date && new Date(price.endDate) > date
-    )
-
-    if (!matchingPriceEntry) {
-        throw 'Price for the requested date is missing'
-    }
-
-    return matchingPriceEntry.price
-}
-
-app.get("/api/notes", async (req, res) => {
+app.get("/api/health", async (req, res) => {
     res.json({ message: "success!" })
 })
 
@@ -52,7 +28,7 @@ app.get("/api/prices", async (req, res) => {
         const { prices } = await fetchLatestPriceData() as { prices: Price[] }
         res.send(prices)
     } catch (e) {
-        res.status(500).json({ error: `Error message: ${e}` })
+        res.status(500).json({ error: `Hintojen hakeminen epäonnistui, syy: ${e}` })
     }
 })
 

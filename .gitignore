@@ -1,5 +1,6 @@
 #SERVER
 kotidata-server/node_modules/
+.env
 
 #CLIENT
 # Logs
