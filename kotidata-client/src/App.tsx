@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import './App.css'
+import './styles/App.css'
 import Electricity from './components/Electricity'
+import Clock from './components/Clock'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,6 +9,7 @@ function App() {
   return (
     <main>
       <h1>Kotidata</h1>
+      <Clock />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
