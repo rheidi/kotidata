@@ -1,7 +1,11 @@
+import 'dotenv/config'
 import express from "express"
 import cors from "cors"
 import axios from 'axios'
 import { Price, fetchLatestPriceData, getPriceForDate } from "./services/electricityPriceService"
+import { fetchTimetableData } from "./services/timetableService"
+import { time } from "console"
+
 
 const app = express()
 
@@ -29,6 +33,16 @@ app.get("/api/prices", async (req, res) => {
         res.send(prices)
     } catch (e) {
         res.status(500).json({ error: `Hintojen hakeminen epäonnistui, syy: ${e}` })
+    }
+})
+
+app.get("/api/bus-stop-now/:id?", async (req, res) => {
+    try {
+        const { id } = req.params
+        const timetable = await fetchTimetableData(id)
+        res.send(timetable)
+    } catch (e) {
+        res.status(500).json({ error: `Bussipysäkin haku epäonnistui, syy: ${e}` })
     }
 })
 

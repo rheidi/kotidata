@@ -7,7 +7,7 @@ client starts with `npm run dev` and runs in port 5173.
 
 ## server
 
-Express
+Node.js & Express
 server starts with `npx nodemon`and runs in port 5004.
 
 
