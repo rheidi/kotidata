@@ -42,6 +42,22 @@ main {
   padding: 15px;
 }
 
+.bus-stop-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.stop-container-item {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+th {
+  text-align: left;
+}
+
 aside {
   grid-area: sivupylly;
   padding: 15px;

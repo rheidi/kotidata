@@ -3,6 +3,7 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import Clock from './components/Clock'
 import Electricity from './components/Electricity'
+import Timetables from './components/Timetables'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       </aside>
       <main>
         <div className='middleStuff'>
+          <Timetables />
           <Electricity />
         </div>
       </main>

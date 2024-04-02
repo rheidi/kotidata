@@ -30,7 +30,6 @@ const Electricity: React.FC = () => {
         console.error("Error fetching data: ", error)
       }
     };
-
     getAllPrices();
   }, [])
 
@@ -69,4 +68,4 @@ const Electricity: React.FC = () => {
   )
 }
 
-export default Electricity;
+export default Electricity
