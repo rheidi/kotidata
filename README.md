@@ -1,22 +1,23 @@
 # kotidata
 
-This is a project to transform an extra display at home to display useful information. Right now it shows time and date (of course), nearestand bus and tram stops timetables, and also current price of electricity as well as electricity prices in columns.
+This is a project to transform an extra display at home to display useful information. Right now it shows time and date (of course), nearest bus and tram stops timetables, and also current price of electricity as well as electricity prices in columns.
 
 The data is fetched from different APIs and displayed in a simple react app.
-Electricity data: https://porssisahko.net/api
-Timetables: https://digitransit.fi/en/developers/
+
+- Electricity data: https://porssisahko.net/api
+- Timetables: https://digitransit.fi/en/developers/
 
 ## client
 
 ### React & vite
 
-client starts with `npm run dev` and runs in port 5173.
+Client starts with `npm run dev` and runs in port 5173.
 
 ## server
 
 ### Node.js & Express
 
-server starts with `npx nodemon`and runs in port 5004.
+Server starts with `npx nodemon`and runs in port 5004.
 
 
 ## Electricity prices

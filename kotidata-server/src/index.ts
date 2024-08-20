@@ -1,10 +1,8 @@
 import 'dotenv/config'
 import express from "express"
 import cors from "cors"
-import axios from 'axios'
 import { Price, fetchLatestPriceData, getPriceForDate } from "./services/electricityPriceService"
 import { fetchTimetableData } from "./services/timetableService"
-import { time } from "console"
 
 
 const app = express()

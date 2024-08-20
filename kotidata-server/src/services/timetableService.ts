@@ -58,6 +58,5 @@ const getQueryStop = (id: string) => `{
 
 export async function fetchTimetableData(id: string = stopId): Promise<Stop> {
   const response = await axios.post(TIMETABLES_ENDPOINT, { query: getQueryStop(id) }, { headers })
-  console.log("response.data: ", response.data)
   return response.data.data.stop
 }
