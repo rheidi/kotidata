@@ -50,7 +50,7 @@ const Timetables: React.FC = () => {
     <div className='bus-stop-container'>
       <h2>Lähipysäkkien aikataulut</h2>
       <div className='stop-container-item'>
-        <BusStop stopName="Länteen" stoptimesWithoutPatterns={stop1?.stoptimesWithoutPatterns || []} />
+        <BusStop stopName="Pitäjänmäkeen" stoptimesWithoutPatterns={stop1?.stoptimesWithoutPatterns || []} />
         <BusStop stopName="Keskustaan" stoptimesWithoutPatterns={stop2?.stoptimesWithoutPatterns || []} />
         <BusStop stopName="Leppävaaraan" stoptimesWithoutPatterns={stop3?.stoptimesWithoutPatterns || []} />
         <BusStop stopName="Itäkeskukseen" stoptimesWithoutPatterns={stop4?.stoptimesWithoutPatterns || []} />

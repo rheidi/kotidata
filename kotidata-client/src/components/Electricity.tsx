@@ -12,8 +12,14 @@ import {
 
 type Price = {
   price: number
-  startDate: Date
-  endDate: Date
+  startDate: string
+  endDate: string
+};
+
+type FormattedPrice = {
+  price: number
+  startDate: string
+  startTime: string
 };
 
 const Electricity: React.FC = () => {
@@ -32,6 +38,15 @@ const Electricity: React.FC = () => {
     };
     getAllPrices();
   }, [])
+
+  const formatPrice = (p: Price): FormattedPrice => {
+    const startDate = new Date(p.startDate)
+    return {
+      price: p.price,
+      startDate: startDate.getDate() + "." + (startDate.getMonth() + 1),
+      startTime: startDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+    }
+  }
 
   const priceNow = () => {
     const now = new Date();
@@ -56,9 +71,9 @@ const Electricity: React.FC = () => {
       <h2>Sähkön hinta</h2>
       <p>Hinta tällä hetkellä: {priceNow()}</p>
       <ResponsiveContainer width="101%" height={300}>
-        <BarChart data={prices}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="startDate" reversed={true} />
+        <BarChart data={prices.map(p => formatPrice(p))}>
+          <CartesianGrid strokeDasharray="2 2" />
+          <XAxis dataKey="startTime" reversed={true} />
           <YAxis />
           <Tooltip />
           <Bar dataKey="price" fill="#AEC670" />
