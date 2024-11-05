@@ -37,7 +37,7 @@ const headers = {
 const getQueryStop = (id: string) => `{
   stop(id: "${id}") {
     name
-      stoptimesWithoutPatterns {
+      stoptimesWithoutPatterns(numberOfDepartures: 10) {
       scheduledArrival
       realtimeArrival
       arrivalDelay
