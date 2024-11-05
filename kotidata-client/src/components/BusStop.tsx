@@ -27,6 +27,10 @@ type Props = {
 }
 
 const BusStop: React.FC<Props> = ({ stopName, stoptimesWithoutPatterns }) => {
+  const shortenDestination = (destination: string) => {
+    return destination.replace(/ via .*/, '');
+  };
+
   return (
     <div className='stop'>
       <h3>{stopName}</h3>
@@ -43,11 +47,9 @@ const BusStop: React.FC<Props> = ({ stopName, stoptimesWithoutPatterns }) => {
             <React.Fragment key={index}>
               <tr>
                 <td>{stoptime.trip.route.shortName}</td>
-                <td>{!stoptime.realtime ?? "~"}</td>
+                <td>{stoptime.realtime ?? "~"}</td>
                 <td>{new Date(stoptime.serviceDay * 1000 + stoptime.realtimeArrival * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</td>
-              </tr>
-              <tr>
-                <td colSpan={3}>{stoptime.headsign}</td>
+                <td colSpan={3}>{shortenDestination(stoptime.headsign)}</td>
               </tr>
             </React.Fragment>
           ))}
